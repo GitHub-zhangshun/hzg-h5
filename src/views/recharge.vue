@@ -29,6 +29,9 @@
       </ul>
       <x-button type="warn" @click.native="submit" :disabled='disabled' :show-loading="show_loading"
       :class="disabled==true?'disabled':''">确认充值</x-button>
+      <div class="instructions">
+        <span>注：每日23:00至次日00:30为系统维护时间，期间暂停快捷充值，网银充值服务</span>
+      </div>
     </div>   
     <Footer></Footer>
     <!-- <codeDialog :codeDialog_show.sync="codeDialog_show" :amt="amt" @clearTimer="clearTimer"></codeDialog>         -->
@@ -109,13 +112,10 @@
         this.bankFname = data.result.name
         this.cardNo = data.result.cardNo && data.result.cardNo.slice(-4) || ''
         this.bankIcon = data.result.icoLink
-        this.singleQuota = data.result.singleQuota && (Number(data.result.singleQuota) >= 10000 ?
-          `单笔限额${Number(data.result.singleQuota)/10000}万元` : `单笔限额${data.result.singleQuota}元`) || ''
+        this.singleQuota = data.result.singleQuota && (Number(data.result.singleQuota) >= 10000 ?`单笔限额${Number(data.result.singleQuota)/10000}万元` : `单笔限额${data.result.singleQuota}元`) || ''
         this.singleQuota_number = data.result.singleQuota
-        this.dayQuota = data.result.dayQuota && (Number(data.result.dayQuota) >= 10000 ?
-          `，单日限额${Number(data.result.dayQuota)/10000}万元` : `，单日限额${data.result.dayQuota}元，`) || ''
-        this.monthQuota = data.result.monthQuota && (Number(data.result.monthQuota) >= 10000 ?
-          `，单月限额${Number(data.result.monthQuota)/10000}万元` : `，单月限额${data.result.monthQuota}元`) || ''
+        this.dayQuota = data.result.dayQuota && (Number(data.result.dayQuota) >= 10000 ?`，单日限额${Number(data.result.dayQuota)/10000}万元` : `，单日限额${data.result.dayQuota}元`) || ''
+        this.monthQuota = data.result.monthQuota && (Number(data.result.monthQuota) >= 10000 ?`，单月限额${Number(data.result.monthQuota)/10000}万元` : `，单月限额${data.result.monthQuota}元`) || ''
       })
       indexApi.platformConfig().then(data => {
         this.minCharge = data.result.minCharge
@@ -268,8 +268,6 @@
         height: 88px;
         font-size: 32px;
         width: 670px;
-        margin-bottom: 230px;
-
         i {
           width: 40px;
           height: 40px;
@@ -279,6 +277,17 @@
       .disabled {
         background: #cfd4da;
         color: #fff;
+      }
+      .instructions{
+        padding-top: 40px;
+        padding-left: 44px;
+        padding-right: 40px;
+        span{
+          padding-top: 20px;
+          font-size: 24px;
+          line-height: 1.5;
+          color: #848a93;
+        }
       }
     }
 

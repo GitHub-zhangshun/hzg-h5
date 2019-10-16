@@ -68,6 +68,10 @@ request.interceptors.response.use(
   response => {
     let responseURL = response.request.responseURL.split('/')
     const res = response.data
+    try {
+      let keys = Object.keys(res)
+      keys.includes('total') && !res.total && (res.total = 0)
+    } catch (error) {}
     if (res.code !== '0') {
       switch (res.code) {
         case '10003':

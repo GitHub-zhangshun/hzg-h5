@@ -68,10 +68,6 @@
         this.showList = false
         return
       }
-      if (this.$route.query.userId == '26784cf4-97cd-4c0c-b299-9334b8f3f5df') {
-        this.history_show = 1
-        return
-      }
       this.history_show = 2
       indexApi.loanStatisticsByUserId(this.$route.query.userId).then((data) => {
         if (data.code == 0) {
@@ -91,16 +87,15 @@
     methods: {
       onLoad() {
         // 异步更新数据
-        if (this.$route.query.userId == '26784cf4-97cd-4c0c-b299-9334b8f3f5df') {
-          this.history_show = true
-          return
-        }
         indexApi.productListByBorrow({
             num: this.num,
             size: 10,
             dataId: this.$route.query.userId
           })
           .then(data => {
+            if(data.total ==null ){
+              data.total = 0
+            }
             if (data.total == 0) {
               this.flag = 1
               this.loading = false;

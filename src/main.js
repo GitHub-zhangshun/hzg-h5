@@ -55,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
   /* 路由发生变化修改页面title */
   let title = to.query.title || to.meta.title || '和掌柜'
   window.document.title = title
-  if (!sessionStorage.getItem('dictionaryListByAll')) {
+  if (!sessionStorage.getItem('dictionaryListByAll') && to.fullPath != '/page403' && to.fullPath != '/page404') {
     await indexApi.dictionaryListByAll()
       .then(data => {
         sessionStorage.setItem('dictionaryListByAll', JSON.stringify(data.result))

@@ -135,6 +135,7 @@
       if (localStorage.token) {
         this.$router.push('/')
       }
+      
     }
   }
 

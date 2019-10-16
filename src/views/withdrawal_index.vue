@@ -39,8 +39,7 @@
     <div class="instructions">
       <p>提现额度说明:</p>
       <p>单笔提现限额20万，单日提现限额T+0：200万，T+1:100万。</p>
-      <span>注：每日23:00至次日00:30为系统维护时间，期间暂停快捷充值，网银充值，T0提现服务
-</span>
+      <span>注：每日23:00至次日00:30为系统维护时间，期间暂停T0提现服务</span>
     </div>
     <Footer></Footer>
     <codeDialog :codeDialog_show.sync="codeDialog_show" :amt="money" @clearTimer="clearTimer"

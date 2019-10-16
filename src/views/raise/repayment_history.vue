@@ -29,10 +29,6 @@ import {indexApi} from '@/api/index'
         },
         mounted(){
             if(!this.$route.query.userId) return
-            if(this.$route.query.userId == '26784cf4-97cd-4c0c-b299-9334b8f3f5df'){
-              this.repayment_show = 1
-              return
-            }
             this.repayment_show = 2
             indexApi.loanStatisticsByUserId(this.$route.query.userId || '').then((data)=>{
                 this.repayAllCount = data.result.repayCount || 0;

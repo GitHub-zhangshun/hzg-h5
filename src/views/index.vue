@@ -64,7 +64,7 @@
               <div><img src="../assets/images/home/two.png" alt="安全保障"></div>
               <p>监督管理</p>
             </li>
-            <li @click="$router.push({path:'/Information_disclosure',query:{index:5}})">
+            <li @click="$router.push({path:'/Information_disclosure',query:{index:4}})">
               <div><img src="../assets/images/home/three.png" alt="运营数据"></div>
               <p>运营数据</p>
             </li>

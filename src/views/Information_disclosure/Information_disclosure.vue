@@ -7,9 +7,9 @@
             <van-tab title="银行存管">
                 <bank></bank>
             </van-tab>
-            <van-tab title="备案信息">
+            <!-- <van-tab title="备案信息">
                 <record></record>
-            </van-tab>
+            </van-tab> -->
             <van-tab title="公司概况">
                 <company></company>
             </van-tab>

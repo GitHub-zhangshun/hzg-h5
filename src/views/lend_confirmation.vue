@@ -256,6 +256,9 @@ import md5 from 'blueimp-md5'
                 this.$router.push({path:'/recharge'})                           
             },
             get_coupon_number(){
+                if(!this.$route.query.id) {
+                  return
+                }
                 indexApi.couponUsableCount({bidId:this.$route.query.id,money:this.money})
                 .then( data => {
                     if(data.result==0){

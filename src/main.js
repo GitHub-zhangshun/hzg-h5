@@ -8,6 +8,7 @@ import router from './router'
 import '@/assets/style/border.css'
 import '@/assets/style/reset.css'
 import Es6Promise from 'es6-promise'
+import './errorLog' // error log
 require('es6-promise').polyfill()
 Es6Promise.polyfill()
 
@@ -33,6 +34,13 @@ import VeLine from 'v-charts/lib/line.common'
 import VeRing from 'v-charts/lib/ring.common'
 import VeMap from 'v-charts/lib/map.common'
 import store from './store/index'
+
+import * as fundebug from "fundebug-javascript"
+import fundebugVue from "fundebug-vue"
+fundebug.init({
+  apikey: "009656fee9e303fb263d379123fc3860fb5953f281439305dbb3903e0e5030d8"
+})
+fundebugVue(fundebug, Vue);
 
 Vue.use(Dialog)
 Vue.use(Tab).use(Tabs)

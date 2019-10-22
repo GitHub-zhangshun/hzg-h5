@@ -6,10 +6,39 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_911392_awpbsqxgsaf.css">
     <link rel="stylesheet" href="/static/index.css">
     <title></title>
+    <script>
+      window.onload = function(){
+        if(!(document.cookie || navigator.cookieEnabled))
+        {
+          document.getElementById('app').style.display='none';
+          document.getElementById('jscheck').style.display='';
+        }
+      }
+    </script>
+    <style>
+      #jscheck{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+      }
+      #jscheck>p{
+        margin: 0;
+        font-size: 14px;
+      }
+      #jscheck>img{
+        width: 80%;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="jscheck" style="display: none;">
+      <p>您的浏览器禁止了脚本运行,请开启JS和cookie</p>
+      <img src="./static/JS.png" alt="">
+    </div>
+    <noscript>您的浏览器禁止了脚本运行,请开启JS和cookie</noscript>
   </body>
   <script>
     document.body.addEventListener('touchstart', function () { });

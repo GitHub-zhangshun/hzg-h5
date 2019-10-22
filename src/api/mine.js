@@ -1,7 +1,11 @@
 /* eslint-disable no-dupe-keys */
 import {request, axios} from '@/libs/request'
 // eslint-disable-next-line no-trailing-spaces
-let indexApi = {    
+let indexApi = {
+  // 错误信息
+  platformErrorLogAdd (data) {
+    return request({url: '/v1/cms/op/platformErrorLogAdd', data: data})
+  },
   // 短信验证码
   smsCodeSend (phone, a) {
     return request({url: '/v1/cms/core/smsCodeSend', data: {simplify: 'login_sms_code', phone: phone, existUser: a}})

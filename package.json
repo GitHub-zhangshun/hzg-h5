@@ -22,6 +22,8 @@
     "echarts": "^4.2.0-rc.2",
     "es6-promise": "^4.2.8",
     "fastclick": "^1.0.6",
+    "fundebug-javascript": "^2.0.0",
+    "fundebug-vue": "0.0.1",
     "group-array": "^0.3.3",
     "mescroll.js": "^1.4.0",
     "pdfjs-dist": "^2.0.943",
@@ -103,7 +105,7 @@
     "vux-loader": "^1.2.9",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

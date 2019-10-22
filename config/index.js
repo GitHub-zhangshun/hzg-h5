@@ -11,11 +11,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-          // target: 'http://134.175.123.237:9001',//测试
+          target: 'http://134.175.123.237:9001',//测试
           // target: 'http://10.10.11.10:9001',//开发
           // target: 'http://10.10.11.34:9001',//开发
           // target: 'http://10.10.11.210:9001',//开发
-          target: 'https://api.cd-rzt.com',//正式
+          // target: 'https://api.cd-rzt.com',//正式
           changeOrigin: true,//是否允许跨越
           pathRewrite: {
               '^/api': '',//重写,

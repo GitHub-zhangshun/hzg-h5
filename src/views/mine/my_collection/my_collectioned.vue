@@ -78,7 +78,7 @@ import {publicFun} from "@/libs/publicFun"
                     dataId:this.$route.query.type
                 }
                 indexApi.userRepayList(formdata).then(data =>{
-                    if(data.result.length==0){
+                    if(page.num === 1 && data.result.length==0){
                         this.flag = true
                     }
                     if (page.num === 1) this.list = []

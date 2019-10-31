@@ -76,8 +76,8 @@ import { Dialog } from 'vant';
                     dataId:this.$route.query.type
                 }
                 indexApi.userRepayList(formdata).then(data =>{
-                    if(data.result.length==0){
-                        this.flag = true
+                    if(page.num === 1 && data.result.length==0){
+                      this.flag = true
                     }
                     if (page.num === 1) this.list = []
                     for(var i = 0; i<data.result.length;i++){

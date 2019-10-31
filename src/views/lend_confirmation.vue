@@ -126,6 +126,7 @@ import md5 from 'blueimp-md5'
                 this.disabled=true
                 this.lx=0
                 this.tips = false
+                this.lx = publicFun.lx(this.limitUnit,this.money,this.rate,this.count)
                 if(this.money==''){
                     this.moneyIsOk = 1
                     this.tips = true
@@ -149,10 +150,14 @@ import md5 from 'blueimp-md5'
             },
             surplusMoney() {
                 if(this.$route.query.money){
-                    this.money = this.$route.query.money
+                  this.money = this.$route.query.money
                 }
             },
             coupon(n){
+              if(this.coupon && this.coupon.couponType == 2){
+                let rate = Number(this.rate) + Number(this.coupon.couponVal)
+                this.lx = publicFun.lx(this.limitUnit,this.money,rate,this.count)
+              }
                 if(n){
                     this.text_coupon = `${JSON.parse(localStorage.getItem('coupon')).typeTxt}：${JSON.parse(localStorage.getItem('coupon')).couponVal}${JSON.parse(localStorage.getItem('coupon')).couponType==1?'元':'%'}`
                     this.couponId = JSON.parse(localStorage.getItem('coupon')).id
@@ -220,22 +225,22 @@ import md5 from 'blueimp-md5'
                 this.coupon = localStorage.coupon && JSON.parse(localStorage.coupon)
             }
             if(!this.$route.query.money){
-                localStorage.removeItem('coupon')
-                this.text_coupon = '暂无优惠券可用'
-                this.money = ''
+              localStorage.removeItem('coupon')
+              this.text_coupon = '暂无优惠券可用'
+              this.money = ''
             }else{
-                this.get_coupon_number()
-                if(localStorage.coupon){
-                    this.coupon = localStorage.coupon && JSON.parse(localStorage.coupon)
+              this.get_coupon_number()
+              if(localStorage.coupon){
+                this.coupon = localStorage.coupon && JSON.parse(localStorage.coupon)
+              }else{
+                this.yuan = publicFun.number_format((Number(this.money) - this.investMonet))
+                this.text_coupon = '不使用优惠券'
+                if(this.disabled){
+                    this.btn_text = '确定'
                 }else{
-                    this.yuan = publicFun.number_format((Number(this.money) - this.investMonet))
-                    this.text_coupon = '不使用优惠券'
-                    if(this.disabled){
-                        this.btn_text = '确定'
-                    }else{
-                        this.btn_text = `确认支付：${publicFun.number_format(this.money,2)}元`
-                    }
-                }                
+                    this.btn_text = `确认支付：${publicFun.number_format(this.money,2)}元`
+                }
+              }                
             }
         },
         methods:{

@@ -31,46 +31,6 @@
         </li>
         <li><i class="icon iconfont icon-shenglvehao" @click="$router.push({path:'/announcement'})"></i></li>
       </ul>
-      <!-- 稳健运营 -->
-      <div class="stableOperation">
-        <header>运营数据</header>
-        <p class="safeDay">运营时间</p>
-        <div class="day">
-          <ul>
-            <li v-for="(item, index) in runTime" :key="index">{{item}}</li>
-          </ul>
-          <span>天</span>
-        </div>
-        <div class="moneyAndPeople">
-          <div class="money">
-            <p>累计成交金额 (元)</p>
-            <span>{{transactionTotal}}</span>
-          </div>
-          <div class="prople">
-            <p>累计注册用户数 (人)</p>
-            <span>{{registerTotal}}</span>
-          </div>
-        </div>
-        <!-- <div class="tips">
-                <span><i class="icon iconfont icon-gridx"></i>您的资金由晋城银行存管系统存管</span>
-            </div> -->
-        <div class="iso">
-          <ul>
-            <li @click="$router.push('/Information_disclosure')">
-              <div><img src="../assets/images/home/one.png" alt="信息披露"></div>
-              <p>信息披露</p>
-            </li>
-            <li @click="$router.push('/safe')">
-              <div><img src="../assets/images/home/two.png" alt="安全保障"></div>
-              <p>监督管理</p>
-            </li>
-            <li @click="$router.push({path:'/Information_disclosure',query:{index:4}})">
-              <div><img src="../assets/images/home/three.png" alt="运营数据"></div>
-              <p>运营数据</p>
-            </li>
-          </ul>
-        </div>
-      </div>
       <!-- 新人优享 -->
       <div class="couple" v-if="newPeople">
         <header>新人优享</header>
@@ -120,6 +80,48 @@
             <span>剩余{{item.canInvestMoney}}元可投</span>
             <button @click.stop="borrow(item.hotproId,item.signType)">立即借出</button>
           </div>
+        </div>
+      </div>
+      
+      
+      <!-- 稳健运营 -->
+      <div class="stableOperation">
+        <header>运营数据</header>
+        <p class="safeDay">运营时间</p>
+        <div class="day">
+          <ul>
+            <li v-for="(item, index) in runTime" :key="index">{{item}}</li>
+          </ul>
+          <span>天</span>
+        </div>
+        <div class="moneyAndPeople">
+          <div class="money">
+            <p>累计成交金额 (元)</p>
+            <span>{{transactionTotal}}</span>
+          </div>
+          <div class="prople">
+            <p>累计注册用户数 (人)</p>
+            <span>{{registerTotal}}</span>
+          </div>
+        </div>
+        <!-- <div class="tips">
+                <span><i class="icon iconfont icon-gridx"></i>您的资金由晋城银行存管系统存管</span>
+            </div> -->
+        <div class="iso">
+          <ul>
+            <li @click="$router.push('/Information_disclosure')">
+              <div><img src="../assets/images/home/one.png" alt="信息披露"></div>
+              <p>信息披露</p>
+            </li>
+            <li @click="$router.push('/safe')">
+              <div><img src="../assets/images/home/two.png" alt="安全保障"></div>
+              <p>监督管理</p>
+            </li>
+            <li @click="$router.push({path:'/Information_disclosure',query:{index:4}})">
+              <div><img src="../assets/images/home/three.png" alt="运营数据"></div>
+              <p>运营数据</p>
+            </li>
+          </ul>
         </div>
       </div>
       <!-- 提示 -->
@@ -643,7 +645,7 @@
     .couple {
       background: #fff;
       padding-top: 36px;
-
+      margin-top: 18px;
       header {
         font-size: 32px;
         padding-left: 12px;

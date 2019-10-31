@@ -19,7 +19,7 @@
                         <div class="center">
                             <p>{{item.minMoney}}</p>
                             <p>使用项目期限{{item.limitTime==""?"无限制":`≥${item.limitTime}天`}}</p>
-                            <p>有效期：{{item.time}}</p>
+                            <p>有效期至：<br>{{item.time}}</p>
                         </div>
                         <div class="right">
                             <button @click="$router.push('/product_list?type=product_list')" :disabled="item.status=='uc_coupon_unused'?false:true">{{item.status=="uc_coupon_unused"?'使用':item.status=="uc_coupon_use"?'已使用':'已过期'}}</button>
@@ -97,7 +97,7 @@ import { publicFun } from '@/libs/publicFun'
                             typeTxt:item.typeTxt,
                             limitTime:item.limitTime,
                             minMoney:item.minMoney == 0?`单笔出借金额无限制`:item.minMoney>= 10000?`单笔出借满${item.minMoney/10000}万元`:`单笔出借满${item.minMoney}元`,
-                            time:`${publicFun.timestampToTime(item.createAt,"-")}至${publicFun.timestampToTime(item.validTime,"-")}`,
+                            time:`${publicFun.timestampToTimesfs(item.validTime,"-")}`,
                             bidType:item.bidType==""?'无限制':item.bidType.split(',').map( i => { 
                               return publicFun.Pl_title(i)
                             }).toString().replace(',','、'),

@@ -14,7 +14,7 @@
                         <div class="center">
                             <p>{{item.minMoney}}</p>
                             <p>使用项目期限{{item.limitTime==""?"无限制":`≥${item.limitTime}天`}}</p>
-                            <p>有效期：{{item.time}}</p>
+                            <p>有效期至：<br>{{item.time}}</p>
                         </div>
                         <div class="right">
                             <button :disabled="!item.isUsable?true:false" @click="goBack(item)">{{item.isUsable?'使用':'不可用'}}</button>
@@ -79,7 +79,7 @@ import { publicFun } from '@/libs/publicFun'
                         typeTxt:item.typeTxt,
                         limitTime:item.limitTime,
                         minMoney:item.minMoney == 0?`单笔出借金额无限制`:item.minMoney>= 10000?`单笔出借满${item.minMoney/10000}万元`:`单笔出借满${item.minMoney}元`,
-                        time:`${publicFun.timestampToTime(item.createAt,"-")}至${publicFun.timestampToTime(item.validTime,"-")}`,
+                        time:`${publicFun.timestampToTimesfs(item.validTime,"-")}`,
                         bidType:item.bidType==""?'无限制':item.bidType.split(',').map( i => { 
                           return publicFun.Pl_title(i)
                         }).toString().replace(',','、'),
